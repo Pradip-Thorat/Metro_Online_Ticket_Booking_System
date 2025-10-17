@@ -4,21 +4,17 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import com.example.motbs.entities.MetroLine;
 import com.example.motbs.entities.Station;
 
 @CrossOrigin
-@RepositoryRestResource(path = "station")
-public interface StationRepository extends JpaRepository<Station, Integer> {
+@RepositoryRestResource(path = "metroline")
+public interface MetroLineRepository extends JpaRepository<MetroLine, Long> {
+    
+    List<MetroLine> findByLineName(String lineName);
 	
-	Optional<Station> findByName(@Param("name") String stationName);
-	
-	Optional<Station> findByNameIgnoreCase(@Param("name") String stationName);
-	
-	Optional<Station> findByNameContaining(@Param("name") String stationName);
-
 }
